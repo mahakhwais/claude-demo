@@ -1,0 +1,21 @@
+# Daily read-only report. Also runnable by hand from the Actions tab.
+name: Daily report
+on:
+  schedule:
+    - cron: "0 9 * * *"   # 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: "Read the repo and write a short report of what the code does and any risks."
+          claude_args: "--max-turns 5 --allowedTools Read,Grep,Glob"
