@@ -17,6 +17,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          show_full_output: true
+          #show_full_output: true
           prompt: "Read the repo and write a short report of what the code does and any risks."
           claude_args: "--max-turns 5 --allowedTools Read,Grep,Glob"
+          #claude_args: "--max-turns 5 --model claude-haiku-5-5 --allowedTools Read,Grep,Glob"
