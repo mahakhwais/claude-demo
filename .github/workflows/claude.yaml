@@ -23,4 +23,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           trigger_phrase: "@claude"
           #claude_args: "--max-turns 5"
-          claude_args: "--max-turns 5 --model claude-haiku-5-5"
+          #claude_args: "--max-turns 5 --model claude-haiku-5-5"
+          claude_args: >-
+            --max-turns 8
+            --model claude-haiku-5-5
+            --allowedTools "Edit,Write,Read,Grep,Glob,Bash(npm test),Bash(git add:*),Bash(git commit:*),Bash(git push:*)"
