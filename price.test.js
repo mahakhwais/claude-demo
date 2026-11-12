@@ -10,6 +10,13 @@ test("rejects a discount above 100", () => {
   assert.throws(() => applyDiscount(100, 150), RangeError);
 });
 
+test("applyDiscount rejects NaN and Infinity", () => {
+  assert.throws(() => applyDiscount(NaN, 10), RangeError);
+  assert.throws(() => applyDiscount(Infinity, 10), RangeError);
+  assert.throws(() => applyDiscount(100, NaN), RangeError);
+  assert.throws(() => applyDiscount(100, Infinity), RangeError);
+});
+
 test("20% VAT on 100 is 120", () => {
   assert.strictEqual(addVat(100, 20), 120);
 });
@@ -20,4 +27,11 @@ test("VAT result is rounded to cents", () => {
 
 test("rejects a VAT rate above 100", () => {
   assert.throws(() => addVat(100, 150), RangeError);
+});
+
+test("addVat rejects NaN and Infinity", () => {
+  assert.throws(() => addVat(NaN, 20), RangeError);
+  assert.throws(() => addVat(Infinity, 20), RangeError);
+  assert.throws(() => addVat(100, NaN), RangeError);
+  assert.throws(() => addVat(100, Infinity), RangeError);
 });
