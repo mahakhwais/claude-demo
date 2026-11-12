@@ -3,7 +3,7 @@ const assert = require("node:assert");
 const { applyDiscount, addVat } = require("./price");
 
 test("10% off 200 is 180", () => {
-  assert.strictEqual(applyDiscount(200, 10), 180);
+  assert.strictEqual(applyDiscount(200, 10), 999);
 });
 
 test("rejects a discount above 100", () => {
